@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사이트 소개 · 타임박스</title>
+<meta name="description" content="타임박스 기록 사이트를 만든 이유와 사용 방법을 소개합니다.">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#1B2430; --paper:#F4EFE3; --brass-2:#E8C468; --text-dark:#241F17; --muted:#8B8578; --stamp-red:#B33951;}
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--ink); color:var(--paper); font-family:'Noto Sans KR',sans-serif;}
+  .wrap{max-width:720px; margin:0 auto; padding:50px 20px 80px;}
+  .eyebrow{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.28em; color:var(--brass-2); margin-bottom:10px;}
+  h1{font-family:'Nanum Myeongjo',serif; font-size:34px; margin:0 0 30px;}
+  .card{background:var(--paper); color:var(--text-dark); border-radius:3px; padding:30px 28px; box-shadow:0 10px 30px rgba(0,0,0,.28); margin-bottom:18px;}
+  h2{font-family:'Nanum Myeongjo',serif; font-size:19px; margin:0 0 10px;}
+  p, li{font-size:14px; line-height:1.85; color:#43392A;}
+  ul{padding-left:20px; margin:8px 0;}
+  .tag{display:inline-block; font-family:'Space Mono',monospace; font-size:11px; color:var(--stamp-red); border:1px solid var(--stamp-red); padding:2px 8px; border-radius:2px; margin-right:6px; margin-bottom:6px;}
+  .back{display:inline-block; margin-top:12px; font-family:'Space Mono',monospace; font-size:12px; color:var(--brass-2); text-decoration:none;}
+  .back:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">TIMEBOX RECORD SITE</div>
+  <h1>사이트 소개</h1>
+
+  <div class="card">
+    <h2>왜 타임박스인가</h2>
+    <p>할 일 목록은 "무엇을 할지"는 알려주지만 "언제 끝날지"는 알려주지 않습니다. 타임박스는 여기에 시간이라는 경계선을 그어, 시작하기 부담스러운 일도 정해진 크기의 상자에 담아 실행하도록 돕는 도구입니다. 이 사이트는 25분, 50분, 90분처럼 흔히 쓰이는 단위로 하루를 나누고, 실제로 실행한 기록을 펀치카드처럼 남기는 데 집중해 만들었습니다.</p>
+  </div>
+
+  <div class="card">
+    <h2>무엇을 할 수 있나요</h2>
+    <ul>
+      <li>할 일마다 예상 시간과 분류를 정해 타임박스를 만듭니다.</li>
+      <li>원형 타이머로 진행 상황을 확인하고, 끝나면 도장 찍듯 완료 처리합니다.</li>
+      <li>하루 단위 펀치카드와 카테고리별 집계로 시간이 어디에 쓰였는지 돌아봅니다.</li>
+      <li>모든 기록은 브라우저에만 저장되어, 별도 가입 없이 바로 쓸 수 있습니다.</li>
+    </ul>
+    <div>
+      <span class="tag">집중업무</span><span class="tag">과제/공부</span><span class="tag">러닝</span><span class="tag">콘텐츠</span><span class="tag">기타</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>문의</h2>
+    <p>버그 제보나 개선 아이디어가 있다면 언제든 남겨 주세요. (연락처: 운영자 이메일을 이곳에 기재하세요)</p>
+  </div>
+
+  <a class="back" href="index.html">← 타임박스로 돌아가기</a>
+</div>
+</body>
+</html>
