@@ -1,3 +1,1 @@
-# 애드센스 승인 후 아래 형식으로 발급받은 퍼블리셔 ID를 넣고
-# 이 파일을 사이트 루트(https://your-domain.com/ads.txt)에 그대로 올리세요.
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-2557338953436433, DIRECT, f08c47fec0942fa0
