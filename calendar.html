@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>달력 · 타임박스</title>
+<meta name="description" content="월 단위로 어떤 날 얼마나 타임박스를 채웠는지 한눈에 보는 타임박스 달력.">
+<meta name="naver-site-verification" content="5e72d5a7c8d6067851d87bc4873bbc3979717430" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2557338953436433" crossorigin="anonymous"></script>
+<style>
+:root{
+  --ink:#1B2430; --ink-2:#141B24; --paper:#F4EFE3; --brass:#C89B3C; --brass-2:#E8C468;
+  --stamp-red:#B33951; --line:#3A4655; --muted:#8B8578; --text-dark:#241F17;
+  --focus:#6E8F8C; --task:#B3743E; --run:#7A8F4A; --insta:#A45C8C; --etc:#6B7280;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:var(--ink); color:var(--paper); font-family:'Noto Sans KR',sans-serif; min-height:100vh;}
+a{color:inherit;}
+.wrap{max-width:960px; margin:0 auto; padding:36px 20px 80px;}
+header.top{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; border-bottom:2px solid var(--line); padding-bottom:22px; margin-bottom:18px; flex-wrap:wrap;}
+.brand-eyebrow{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.28em; color:var(--brass-2); text-transform:uppercase; margin-bottom:8px;}
+h1{font-family:'Nanum Myeongjo',serif; font-weight:800; font-size:clamp(28px,5vw,40px); margin:0;}
+.nav-bar{display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;}
+.nav-bar a{font-family:'Space Mono',monospace; font-size:12px; border:1px solid var(--line); padding:8px 14px; border-radius:2px; text-decoration:none; color:var(--paper);}
+.nav-bar a:hover{border-color:var(--brass);}
+.nav-bar a.primary{background:var(--stamp-red); border-color:var(--stamp-red); color:#FBF3E8; font-weight:700;}
+
+.panel{background:var(--paper); color:var(--text-dark); border-radius:3px; padding:26px 24px; margin-bottom:22px; box-shadow:0 10px 30px rgba(0,0,0,.28); position:relative;}
+.panel-title{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:0 0 16px 0;}
+
+.month-switch{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;}
+.month-switch button{background:var(--ink); color:var(--brass-2); border:none; padding:8px 14px; border-radius:2px; font-family:'Space Mono',monospace; cursor:pointer;}
+.month-label{font-family:'Nanum Myeongjo',serif; font-size:20px; font-weight:700;}
+
+.cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:6px;}
+.cal-dow{text-align:center; font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); padding-bottom:4px;}
+.cal-cell{
+  min-height:74px; border:1px solid #DCD3B9; border-radius:2px; padding:6px;
+  background:#FBF8F0; cursor:pointer; text-decoration:none; color:var(--text-dark); display:block;
+}
+.cal-cell:hover{border-color:var(--stamp-red);}
+.cal-cell.empty{background:transparent; border-color:transparent; cursor:default;}
+.cal-cell.today{border-color:var(--brass); border-width:2px;}
+.cal-cell .dnum{font-family:'Space Mono',monospace; font-size:12px; color:var(--muted);}
+.cal-cell .dsum{margin-top:6px; font-size:11px; font-weight:700; color:var(--stamp-red);}
+.cal-cell .ddots{display:flex; gap:3px; margin-top:5px; flex-wrap:wrap;}
+.cal-cell .ddots span{width:6px; height:6px; border-radius:50%; display:inline-block;}
+@media(max-width:640px){ .cal-cell{min-height:54px; font-size:11px;} .cal-cell .dsum{font-size:10px;} }
+
+.legend{display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; font-size:12px; font-family:'Space Mono',monospace;}
+.legend span.dot{width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:5px;}
+
+.ad-slot{max-width:960px; margin:0 auto 22px; text-align:center;}
+.ad-slot .ad-label{font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.2em; color:var(--muted); margin-bottom:6px; text-transform:uppercase;}
+.ad-slot .ad-box{min-height:90px; border:1px dashed var(--line); border-radius:2px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-family:'Space Mono',monospace; font-size:12px;}
+
+footer.foot{text-align:center; font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); margin-top:40px;}
+footer.foot .foot-links{margin-bottom:14px; font-family:'Noto Sans KR',sans-serif; font-size:13px;}
+footer.foot .foot-links a{color:var(--brass-2); text-decoration:none; margin:0 10px;}
+
+.cookie-banner{position:fixed; left:0; right:0; bottom:0; background:var(--ink-2); border-top:1px solid var(--brass);
+  padding:14px 20px; display:none; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; z-index:999; font-size:13px;}
+.cookie-banner.show{display:flex;}
+.cookie-banner p{margin:0; max-width:640px; line-height:1.6; color:var(--paper);}
+.cookie-banner a{color:var(--brass-2);}
+.cookie-banner button{background:var(--brass); color:var(--ink); border:none; padding:8px 18px; border-radius:2px; font-family:'Space Mono',monospace; font-weight:700; cursor:pointer;}
+
+/* 우측 상단 유틸 링크 */
+.top-right{display:flex; flex-direction:column; align-items:flex-end; gap:12px; align-self:flex-start;}
+.util-links{display:flex; gap:6px;}
+.util-links a{
+  font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.04em;
+  color:var(--brass-2); text-decoration:none; padding:5px 11px;
+  border:1px solid var(--line); border-radius:2px;
+}
+.util-links a:hover{border-color:var(--brass); background:rgba(200,155,60,.08);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand-eyebrow">TIME · BOX · RECORD</div>
+      <h1>달력으로 보기</h1>
+    </div>
+    <div class="top-right">
+      <div class="util-links">
+        <a href="about.html">소개</a>
+        <a href="mailto:yjw2172@naver.com">문의</a>
+        <a href="calendar.html">달력</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html">홈</a>
+    <a href="track.html" class="primary">기록하기</a>
+    <a href="calendar.html">달력</a>
+    <a href="compare.html">비교 그래프</a>
+  </nav>
+
+  <section class="panel">
+    <div class="month-switch">
+      <button id="prevMonth">◀ 이전 달</button>
+      <div class="month-label" id="monthLabel">—</div>
+      <button id="nextMonth">다음 달 ▶</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <div class="ad-slot">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-box">광고 영역 (하단)</div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot-links"><a href="about.html">사이트 소개</a>·<a href="privacy.html">개인정보처리방침</a></div>
+    이 기록은 이 브라우저에만 저장됩니다 · TIMEBOX RECORD SITE
+  </footer>
+</div>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>이 사이트는 Google 애드센스를 통해 광고를 게재하며, Google은 방문 기록을 바탕으로 쿠키를 사용해 맞춤 광고를 제공할 수 있습니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 확인하세요.</p>
+  <button id="cookieOk">확인했어요</button>
+</div>
+
+<script>
+(function(){
+  const STORE_KEY = 'timebox_records_v1';
+  const CAT = {
+    focus:{label:'집중업무', color:'var(--focus)'},
+    task:{label:'과제/공부', color:'var(--task)'},
+    run:{label:'러닝', color:'var(--run)'},
+    insta:{label:'콘텐츠', color:'var(--insta)'},
+    etc:{label:'기타', color:'var(--etc)'}
+  };
+  const pad = n => String(n).padStart(2,'0');
+  const fmtDate = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+
+  function loadAll(){
+    try{ const raw = localStorage.getItem(STORE_KEY); return raw?JSON.parse(raw):{}; }catch(e){ return {}; }
+  }
+
+  let viewMonth = new Date(); viewMonth.setDate(1);
+
+  function renderLegend(){
+    const legend = document.getElementById('legend');
+    legend.innerHTML = Object.keys(CAT).map(k=>`<span><span class="dot" style="background:${CAT[k].color}"></span>${CAT[k].label}</span>`).join('');
+  }
+
+  function renderCalendar(){
+    const all = loadAll();
+    const y = viewMonth.getFullYear(), m = viewMonth.getMonth();
+    document.getElementById('monthLabel').textContent = `${y}년 ${m+1}월`;
+    const grid = document.getElementById('calGrid');
+    grid.innerHTML = '';
+    ['일','월','화','수','목','금','토'].forEach(d=>{
+      const el = document.createElement('div');
+      el.className='cal-dow'; el.textContent=d;
+      grid.appendChild(el);
+    });
+    const firstDow = new Date(y,m,1).getDay();
+    const daysInMonth = new Date(y,m+1,0).getDate();
+    const todayStr = fmtDate(new Date());
+
+    for(let i=0;i<firstDow;i++){
+      const el = document.createElement('div');
+      el.className='cal-cell empty';
+      grid.appendChild(el);
+    }
+    for(let day=1; day<=daysInMonth; day++){
+      const dateObj = new Date(y,m,day);
+      const ds = fmtDate(dateObj);
+      const rec = all[ds];
+      const done = rec ? rec.done : [];
+      const totalMin = done.reduce((s,i)=>s+i.actualMin,0);
+      const byCat = {};
+      done.forEach(i=>{ byCat[i.cat]=true; });
+
+      const a = document.createElement('a');
+      a.href = `track.html?date=${ds}`;
+      a.className = 'cal-cell' + (ds===todayStr ? ' today' : '');
+      a.innerHTML = `
+        <div class="dnum">${day}</div>
+        ${totalMin>0 ? `<div class="dsum">${totalMin}분 · ${done.length}개</div>` : ''}
+        <div class="ddots">${Object.keys(byCat).map(k=>`<span style="background:${CAT[k].color}"></span>`).join('')}</div>
+      `;
+      grid.appendChild(a);
+    }
+  }
+
+  document.getElementById('prevMonth').onclick = ()=>{ viewMonth.setMonth(viewMonth.getMonth()-1); renderCalendar(); };
+  document.getElementById('nextMonth').onclick = ()=>{ viewMonth.setMonth(viewMonth.getMonth()+1); renderCalendar(); };
+
+  function initCookieBanner(){
+    try{
+      if(!localStorage.getItem('timebox_cookie_ack')) document.getElementById('cookieBanner').classList.add('show');
+    }catch(e){}
+    document.getElementById('cookieOk').onclick = ()=>{
+      try{ localStorage.setItem('timebox_cookie_ack','1'); }catch(e){}
+      document.getElementById('cookieBanner').classList.remove('show');
+    };
+  }
+
+  renderLegend();
+  renderCalendar();
+  initCookieBanner();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비교 그래프 · 타임박스</title>
+<meta name="description" content="최근 7일간의 집중 시간 추이와 이번 주·지난 주 카테고리별 비교 그래프.">
+<meta name="naver-site-verification" content="5e72d5a7c8d6067851d87bc4873bbc3979717430" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2557338953436433" crossorigin="anonymous"></script>
+<style>
+:root{
+  --ink:#1B2430; --ink-2:#141B24; --paper:#F4EFE3; --brass:#C89B3C; --brass-2:#E8C468;
+  --stamp-red:#B33951; --line:#3A4655; --muted:#8B8578; --text-dark:#241F17;
+  --focus:#6E8F8C; --task:#B3743E; --run:#7A8F4A; --insta:#A45C8C; --etc:#6B7280;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:var(--ink); color:var(--paper); font-family:'Noto Sans KR',sans-serif; min-height:100vh;}
+a{color:inherit;}
+.wrap{max-width:960px; margin:0 auto; padding:36px 20px 80px;}
+header.top{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; border-bottom:2px solid var(--line); padding-bottom:22px; margin-bottom:18px; flex-wrap:wrap;}
+.brand-eyebrow{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.28em; color:var(--brass-2); text-transform:uppercase; margin-bottom:8px;}
+h1{font-family:'Nanum Myeongjo',serif; font-weight:800; font-size:clamp(28px,5vw,40px); margin:0;}
+.nav-bar{display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;}
+.nav-bar a{font-family:'Space Mono',monospace; font-size:12px; border:1px solid var(--line); padding:8px 14px; border-radius:2px; text-decoration:none; color:var(--paper);}
+.nav-bar a:hover{border-color:var(--brass);}
+.nav-bar a.primary{background:var(--stamp-red); border-color:var(--stamp-red); color:#FBF3E8; font-weight:700;}
+
+.panel{background:var(--paper); color:var(--text-dark); border-radius:3px; padding:26px 24px; margin-bottom:22px; box-shadow:0 10px 30px rgba(0,0,0,.28); position:relative;}
+.panel-title{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:0 0 16px 0;}
+
+/* 일별 바 차트 */
+.day-chart{display:flex; align-items:flex-end; gap:10px; height:170px; padding-top:20px;}
+.day-col{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;}
+.day-col .val{font-family:'Space Mono',monospace; font-size:11px; color:var(--stamp-red); margin-bottom:4px; font-weight:700;}
+.day-col .bar{width:60%; background:var(--stamp-red); border-radius:2px 2px 0 0; min-height:2px; transition:height .3s;}
+.day-col .lab{font-family:'Space Mono',monospace; font-size:10px; color:var(--muted); margin-top:6px; text-align:center;}
+.day-col.today .bar{background:var(--brass);}
+.day-col.today .val{color:#8a6a1f;}
+
+/* 카테고리 비교 */
+.cmp-row{margin-bottom:16px;}
+.cmp-row .cmp-label{font-family:'Space Mono',monospace; font-size:12px; margin-bottom:6px; color:var(--text-dark); font-weight:700;}
+.cmp-bar-line{display:flex; align-items:center; gap:8px; margin-bottom:4px;}
+.cmp-bar-line .tag{font-family:'Space Mono',monospace; font-size:10px; width:52px; color:var(--muted); flex:0 0 auto;}
+.cmp-bar-track{flex:1; height:14px; background:#E2D8BE; border-radius:3px; overflow:hidden;}
+.cmp-bar-fill{height:100%; border-radius:3px;}
+.cmp-bar-fill.this{background:var(--stamp-red);}
+.cmp-bar-fill.last{background:var(--brass);}
+.cmp-bar-line .amt{font-family:'Space Mono',monospace; font-size:11px; width:56px; text-align:right; color:var(--text-dark); flex:0 0 auto;}
+.cmp-legend{display:flex; gap:16px; font-family:'Space Mono',monospace; font-size:11px; margin-bottom:16px; color:var(--muted);}
+.cmp-legend span.dot{width:8px; height:8px; border-radius:2px; display:inline-block; margin-right:5px;}
+
+.empty-note{color:var(--muted); font-size:13px; font-style:italic;}
+
+.ad-slot{max-width:960px; margin:0 auto 22px; text-align:center;}
+.ad-slot .ad-label{font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.2em; color:var(--muted); margin-bottom:6px; text-transform:uppercase;}
+.ad-slot .ad-box{min-height:90px; border:1px dashed var(--line); border-radius:2px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-family:'Space Mono',monospace; font-size:12px;}
+
+footer.foot{text-align:center; font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); margin-top:40px;}
+footer.foot .foot-links{margin-bottom:14px; font-family:'Noto Sans KR',sans-serif; font-size:13px;}
+footer.foot .foot-links a{color:var(--brass-2); text-decoration:none; margin:0 10px;}
+
+.cookie-banner{position:fixed; left:0; right:0; bottom:0; background:var(--ink-2); border-top:1px solid var(--brass);
+  padding:14px 20px; display:none; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; z-index:999; font-size:13px;}
+.cookie-banner.show{display:flex;}
+.cookie-banner p{margin:0; max-width:640px; line-height:1.6; color:var(--paper);}
+.cookie-banner a{color:var(--brass-2);}
+.cookie-banner button{background:var(--brass); color:var(--ink); border:none; padding:8px 18px; border-radius:2px; font-family:'Space Mono',monospace; font-weight:700; cursor:pointer;}
+
+/* 우측 상단 유틸 링크 */
+.top-right{display:flex; flex-direction:column; align-items:flex-end; gap:12px; align-self:flex-start;}
+.util-links{display:flex; gap:6px;}
+.util-links a{
+  font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.04em;
+  color:var(--brass-2); text-decoration:none; padding:5px 11px;
+  border:1px solid var(--line); border-radius:2px;
+}
+.util-links a:hover{border-color:var(--brass); background:rgba(200,155,60,.08);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand-eyebrow">TIME · BOX · RECORD</div>
+      <h1>비교 그래프</h1>
+    </div>
+    <div class="top-right">
+      <div class="util-links">
+        <a href="about.html">소개</a>
+        <a href="mailto:yjw2172@naver.com">문의</a>
+        <a href="calendar.html">달력</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html">홈</a>
+    <a href="track.html" class="primary">기록하기</a>
+    <a href="calendar.html">달력</a>
+    <a href="compare.html">비교 그래프</a>
+  </nav>
+
+  <section class="panel">
+    <p class="panel-title">최근 7일 집중 시간</p>
+    <div class="day-chart" id="dayChart"></div>
+  </section>
+
+  <section class="panel">
+    <p class="panel-title">카테고리 비교 · 이번 주 vs 지난 주</p>
+    <div class="cmp-legend">
+      <span><span class="dot" style="background:var(--stamp-red)"></span>이번 주</span>
+      <span><span class="dot" style="background:var(--brass)"></span>지난 주</span>
+    </div>
+    <div id="cmpCats"></div>
+  </section>
+
+  <div class="ad-slot">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-box">광고 영역 (하단)</div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot-links"><a href="about.html">사이트 소개</a>·<a href="privacy.html">개인정보처리방침</a></div>
+    이 기록은 이 브라우저에만 저장됩니다 · TIMEBOX RECORD SITE
+  </footer>
+</div>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>이 사이트는 Google 애드센스를 통해 광고를 게재하며, Google은 방문 기록을 바탕으로 쿠키를 사용해 맞춤 광고를 제공할 수 있습니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 확인하세요.</p>
+  <button id="cookieOk">확인했어요</button>
+</div>
+
+<script>
+(function(){
+  const STORE_KEY = 'timebox_records_v1';
+  const CAT = {
+    focus:{label:'집중업무', color:'var(--focus)'},
+    task:{label:'과제/공부', color:'var(--task)'},
+    run:{label:'러닝', color:'var(--run)'},
+    insta:{label:'콘텐츠', color:'var(--insta)'},
+    etc:{label:'기타', color:'var(--etc)'}
+  };
+  const pad = n => String(n).padStart(2,'0');
+  const fmtDate = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const DOW = ['일','월','화','수','목','금','토'];
+
+  function loadAll(){
+    try{ const raw = localStorage.getItem(STORE_KEY); return raw?JSON.parse(raw):{}; }catch(e){ return {}; }
+  }
+
+  function renderDayChart(){
+    const all = loadAll();
+    const days = [];
+    for(let i=6;i>=0;i--){
+      const d = new Date(); d.setDate(d.getDate()-i);
+      const ds = fmtDate(d);
+      const rec = all[ds];
+      const totalMin = rec ? rec.done.reduce((s,x)=>s+x.actualMin,0) : 0;
+      days.push({ds, d, totalMin});
+    }
+    const max = Math.max(1, ...days.map(x=>x.totalMin));
+    const chart = document.getElementById('dayChart');
+    const todayStr = fmtDate(new Date());
+    chart.innerHTML = days.map(x=>{
+      const h = Math.max(2, Math.round((x.totalMin/max)*130));
+      return `<div class="day-col${x.ds===todayStr?' today':''}">
+        <div class="val">${x.totalMin>0?x.totalMin:''}</div>
+        <div class="bar" style="height:${h}px"></div>
+        <div class="lab">${x.d.getMonth()+1}/${x.d.getDate()}<br>${DOW[x.d.getDay()]}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function weekRange(offsetWeeks){
+    const now = new Date();
+    const day = now.getDay();
+    const diffToMonday = (day===0 ? -6 : 1-day);
+    const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate()+diffToMonday+offsetWeeks*7);
+    const sunday = new Date(monday); sunday.setDate(monday.getDate()+6);
+    return {start:monday, end:sunday};
+  }
+
+  function sumCatsInRange(all, start, end){
+    const totals = {};
+    const cur = new Date(start);
+    while(cur <= end){
+      const ds = fmtDate(cur);
+      const rec = all[ds];
+      if(rec) rec.done.forEach(item=>{ totals[item.cat] = (totals[item.cat]||0) + item.actualMin; });
+      cur.setDate(cur.getDate()+1);
+    }
+    return totals;
+  }
+
+  function renderCatCompare(){
+    const all = loadAll();
+    const thisWeek = weekRange(0);
+    const lastWeek = weekRange(-1);
+    const thisTotals = sumCatsInRange(all, thisWeek.start, thisWeek.end);
+    const lastTotals = sumCatsInRange(all, lastWeek.start, lastWeek.end);
+    const allVals = [...Object.values(thisTotals), ...Object.values(lastTotals)];
+    const max = Math.max(1, ...allVals);
+    const cats = Object.keys(CAT).filter(k=> (thisTotals[k]||0)>0 || (lastTotals[k]||0)>0);
+    const box = document.getElementById('cmpCats');
+    if(cats.length===0){
+      box.innerHTML = '<div class="empty-note">아직 비교할 만한 기록이 없습니다. 이번 주에 몇 개만 채워보세요.</div>';
+      return;
+    }
+    box.innerHTML = cats.map(k=>{
+      const tv = thisTotals[k]||0, lv = lastTotals[k]||0;
+      return `<div class="cmp-row">
+        <div class="cmp-label">${CAT[k].label}</div>
+        <div class="cmp-bar-line">
+          <span class="tag">이번 주</span>
+          <span class="cmp-bar-track"><span class="cmp-bar-fill this" style="width:${(tv/max*100)}%"></span></span>
+          <span class="amt">${tv}분</span>
+        </div>
+        <div class="cmp-bar-line">
+          <span class="tag">지난 주</span>
+          <span class="cmp-bar-track"><span class="cmp-bar-fill last" style="width:${(lv/max*100)}%"></span></span>
+          <span class="amt">${lv}분</span>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function initCookieBanner(){
+    try{
+      if(!localStorage.getItem('timebox_cookie_ack')) document.getElementById('cookieBanner').classList.add('show');
+    }catch(e){}
+    document.getElementById('cookieOk').onclick = ()=>{
+      try{ localStorage.setItem('timebox_cookie_ack','1'); }catch(e){}
+      document.getElementById('cookieBanner').classList.remove('show');
+    };
+  }
+
+  renderDayChart();
+  renderCatCompare();
+  initCookieBanner();
+})();
+</script>
+</body>
+</html>
