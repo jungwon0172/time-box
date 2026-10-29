@@ -6,6 +6,156 @@
 <title>타임박스 · 하루를 정해진 조각으로 찍어내다</title>
 <meta name="description" content="25/50/90분 단위로 하루를 타임박스로 나누고, 실행할 때마다 카드에 도장을 찍듯 기록하는 타임박스 기록 사이트. 달력과 비교 그래프로 시간 사용을 돌아보세요.">
 <meta name="naver-site-verification" content="5e72d5a7c8d6067851d87bc4873bbc3979717430" />
+<link rel="canonical" href="https://time-box-beige.vercel.app/">
+<meta name="theme-color" content="#1B2430">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="타임박스">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="타임박스">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="타임박스 · 하루를 정해진 조각으로 찍어내다">
+<meta property="og:description" content="25/50/90분 단위로 하루를 타임박스로 나누고, 실행할 때마다 카드에 도장을 찍듯 기록하는 타임박스 기록 사이트. 달력과 비교 그래프로 시간 사용을 돌아보세요.">
+<meta property="og:url" content="https://time-box-beige.vercel.app/">
+<meta property="og:image" content="https://time-box-beige.vercel.app/icon-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://time-box-beige.vercel.app/#website",
+   "url": "https://time-box-beige.vercel.app/",
+   "name": "타임박스",
+   "alternateName": [
+    "TimeBox",
+    "타임박스 기록"
+   ],
+   "inLanguage": "ko",
+   "description": "15·25·50·90분 타임박스로 하루를 나누고 도장을 찍듯 기록하는 무료 시간 기록 웹앱"
+  },
+  {
+   "@type": "WebApplication",
+   "@id": "https://time-box-beige.vercel.app/#app",
+   "name": "타임박스",
+   "url": "https://time-box-beige.vercel.app/track.html",
+   "applicationCategory": "ProductivityApplication",
+   "operatingSystem": "Any (Web, PWA)",
+   "browserRequirements": "JavaScript 및 localStorage 지원 브라우저",
+   "inLanguage": "ko",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "KRW"
+   },
+   "description": "할 일을 정해진 시간 상자에 담아 실행하고 기록하는 무료 웹앱. 로그인 없이 사용하며 기록은 브라우저에만 저장됩니다.",
+   "featureList": [
+    "15·25·50·90분 타임박스 생성",
+    "원형 타이머와 일시정지",
+    "계획 시간 초과 몰입 자동 측정 및 수정·삭제",
+    "하루 펀치카드(06~24시)",
+    "월별 달력",
+    "최근 7일·주간 카테고리 비교 그래프",
+    "홈 화면 설치 및 오프라인 실행(PWA)"
+   ],
+   "dateModified": "2026-10-29"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://time-box-beige.vercel.app/#faq",
+   "inLanguage": "ko",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "타임박스(타임박싱)란 무엇인가요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "타임박싱은 하나의 작업에 15분·25분·50분처럼 미리 정한 시간을 배정하고, 그 시간 안에서만 집중하는 시간관리 기법입니다. 끝나는 시점이 정해져 있어 시작 부담이 줄고, 작업이 끝없이 늘어지는 것을 막아줍니다. 이 사이트는 타임박스를 만들고, 타이머로 실행하고, 끝날 때 도장을 찍듯 기록하는 무료 도구입니다."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "타임박스는 몇 분으로 정하는 게 좋나요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "정답은 없지만 흔히 25분은 짧은 집중을 반복하는 작업, 50분은 강의·독서·문제 풀이처럼 흐름이 끊기면 손해인 작업, 90분은 깊은 몰입이 필요한 작업에 쓰입니다. 처음이라면 25분으로 시작해 익숙해지면 늘려 보세요. 이 사이트에서는 15·25·50·90분 프리셋과 직접 입력을 모두 지원합니다."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "타임박싱과 뽀모도로 기법은 뭐가 다른가요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "뽀모도로는 25분 집중과 5분 휴식을 반복하는 고정된 방식이고, 타임박싱은 작업마다 필요한 시간을 직접 정해 배정하는 더 넓은 개념입니다. 뽀모도로를 타임박싱의 한 형태로 볼 수 있으며, 이 사이트에서는 25분 박스를 반복해 뽀모도로처럼 쓸 수도 있습니다."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "타이머 끄는 걸 깜빡하거나 계획 시간을 넘겨 몰입하면 어떻게 되나요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "계획 시간이 지나도 타이머는 멈추지 않고 초과 시간을 자동으로 이어서 측정합니다. 측정은 실제 시작 시각을 기준으로 계산되므로 다른 탭에 갔다 오거나 페이지를 닫았다 다시 열어도 이어집니다. 완료하면 자동 감지된 초과 시간이 따로 표시되고, 그 시간은 날짜가 지나도 언제든 기록·수정·삭제할 수 있습니다."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "기록은 어디에 저장되나요? 로그인이 필요한가요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "로그인이나 회원가입은 필요 없습니다. 기록은 서버로 전송되지 않고 이용자의 브라우저(localStorage)에만 저장됩니다. 그래서 브라우저의 사이트 데이터를 삭제하면 기록도 함께 사라지고, 다른 기기와는 자동으로 동기화되지 않습니다."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "기록을 지울 수 있나요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "완료한 기록은 그날에 한해 삭제할 수 있고, 하루가 지나면 삭제가 잠깁니다. 다만 자동으로 감지된 초과 몰입 시간은 날짜와 상관없이 언제든 수정하거나 삭제할 수 있습니다."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "앱처럼 설치해서 쓸 수 있나요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "네. 홈 화면에 추가하면 주소창 없이 앱처럼 실행되고, 한 번 열어본 뒤에는 오프라인에서도 화면이 열립니다. 안드로이드와 PC 크롬·엣지에서는 설치 버튼이나 주소창의 설치 아이콘을, 아이폰 사파리에서는 공유 버튼의 '홈 화면에 추가'를 사용하세요."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "이용료가 있나요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "무료입니다. 사이트 운영을 위해 광고가 표시될 수 있으며, 광고와 쿠키에 관한 내용은 개인정보처리방침에서 확인할 수 있습니다."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://time-box-beige.vercel.app/#webpage",
+   "url": "https://time-box-beige.vercel.app/",
+   "name": "타임박스 · 하루를 정해진 조각으로 찍어내다",
+   "description": "25/50/90분 단위로 하루를 타임박스로 나누고, 실행할 때마다 카드에 도장을 찍듯 기록하는 타임박스 기록 사이트. 달력과 비교 그래프로 시간 사용을 돌아보세요.",
+   "inLanguage": "ko",
+   "isPartOf": {
+    "@id": "https://time-box-beige.vercel.app/#website"
+   },
+   "about": {
+    "@id": "https://time-box-beige.vercel.app/#app"
+   },
+   "dateModified": "2026-10-29"
+  }
+ ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -138,6 +288,28 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
   border:1px solid var(--line); border-radius:2px;
 }
 .util-links a:hover{border-color:var(--brass); background:rgba(200,155,60,.08);}
+
+/* GEO 요약 · 설치 · FAQ */
+.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:16px 0 0;}
+.facts div{border:1px solid #C9BFA5; background:#FBF8F0; border-radius:2px; padding:10px 12px;}
+.facts dt{font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.12em; color:var(--muted); margin:0 0 4px;}
+.facts dd{margin:0; font-size:13px; color:var(--text-dark); line-height:1.5;}
+.lead{font-size:15px; line-height:1.85; color:#43392A; margin:0;}
+.lead strong{color:var(--stamp-red);}
+.install-btn{
+  display:none; background:var(--stamp-red); color:#FBF3E8; border:none; font-family:'Space Mono',monospace;
+  font-weight:700; font-size:14px; padding:13px 24px; border-radius:2px; cursor:pointer; margin:4px 0 16px;
+}
+.install-btn:hover{background:#9c2f45;}
+.install-ok{display:none; font-family:'Space Mono',monospace; font-size:12px; color:#4f6b2a; margin:0 0 14px;}
+.guide-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px;}
+.guide-grid div{border:1px dashed #C9BFA5; border-radius:2px; padding:12px 14px; background:#FBF8F0;}
+.guide-grid b{font-family:'Nanum Myeongjo',serif; font-size:14px; display:block; margin-bottom:6px;}
+.guide-grid p{margin:0; font-size:13px; line-height:1.75; color:#43392A;}
+.faq-section h3{font-family:'Nanum Myeongjo',serif; font-size:16px; margin:22px 0 6px; color:var(--text-dark);}
+.faq-section h3:first-of-type{margin-top:4px;}
+.faq-section p{font-size:14px; line-height:1.85; margin:0; color:#43392A;}
+.updated{font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); margin-top:18px;}
 </style>
 </head>
 <body>
@@ -168,6 +340,8 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     <a href="track.html" class="primary">타임박스 시작하기</a>
     <a href="calendar.html">달력</a>
     <a href="compare.html">비교 그래프</a>
+    <a href="#install">앱 설치</a>
+    <a href="#faq">FAQ</a>
   </nav>
 
   <!-- 진행 중인 세션 재개 배너 -->
@@ -181,6 +355,18 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     <h2>오늘 하루, 몇 개의 상자로 채워볼까요</h2>
     <p>할 일을 무제한 목록에 던져두는 대신, 15·25·50·90분처럼 정해진 크기의 타임박스에 담아보세요. 시작할 때 부담이 줄고, 끝나면 도장을 찍듯 기록이 남습니다.</p>
     <a class="cta-btn" href="track.html">타임박스 시작하기 →</a>
+  </section>
+
+  <!-- 한눈에 보기 (요약 정의) -->
+  <section class="panel" id="about-timebox">
+    <p class="panel-title">타임박스를 한 문장으로</p>
+    <p class="lead"><strong>타임박스</strong>는 할 일을 15·25·50·90분처럼 정해진 시간 상자에 담아 실행하고, 끝날 때마다 도장을 찍듯 기록하는 <strong>무료 웹앱</strong>입니다. 계획 시간을 넘겨 몰입해도 초과 시간을 자동으로 측정해 주고, 달력과 비교 그래프로 시간을 어디에 썼는지 돌아볼 수 있습니다.</p>
+    <dl class="facts">
+      <div><dt>요금</dt><dd>무료 (광고 표시)</dd></div>
+      <div><dt>가입</dt><dd>로그인 없이 바로 사용</dd></div>
+      <div><dt>저장 위치</dt><dd>내 브라우저에만 저장 (서버 전송 없음)</dd></div>
+      <div><dt>설치</dt><dd>홈 화면에 추가해 앱처럼 사용, 오프라인 실행</dd></div>
+    </dl>
   </section>
 
   <!-- 오늘의 요약 -->
@@ -212,6 +398,18 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     </div>
   </section>
 
+  <!-- 앱 설치 -->
+  <section class="panel" id="install">
+    <p class="panel-title">앱처럼 사용하기</p>
+    <button class="install-btn" id="installBtn" type="button">타임박스 앱 설치하기</button>
+    <p class="install-ok" id="installOk">이미 앱으로 실행 중이에요 ✓</p>
+    <div class="guide-grid">
+      <div><b>안드로이드 · PC 크롬/엣지</b><p>위의 설치 버튼을 누르거나, 주소창 오른쪽의 설치 아이콘(또는 메뉴 → '앱 설치')을 선택하세요.</p></div>
+      <div><b>아이폰 · 아이패드 (사파리)</b><p>하단 공유 버튼 → '홈 화면에 추가'를 누르면 앱 아이콘이 생깁니다.</p></div>
+      <div><b>설치하면 좋은 점</b><p>주소창 없이 전체 화면으로 열리고, 한 번 열어본 뒤에는 인터넷이 없어도 화면이 열립니다. 기록은 이 기기의 브라우저에 저장됩니다.</p></div>
+    </div>
+  </section>
+
   <!-- 타임박싱 안내 콘텐츠 (원본 텍스트) -->
   <section class="panel info-section">
     <p class="panel-title">타임박싱이란</p>
@@ -226,6 +424,28 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     </ul>
     <div class="sub-h">자주 쓰는 시간 단위</div>
     <p>25분은 뽀모도로 기법에서 널리 쓰이는 단위로 짧은 집중 반복에 적합하고, 50분은 강의·독서처럼 흐름이 끊기면 손해인 작업에, 90분은 딥워크처럼 완전히 몰입이 필요한 작업에 어울립니다. 몰입하다 보면 정해둔 시간을 넘기는 경우도 흔한데, 이 사이트는 타이머를 끄는 걸 잊더라도 실제로 몰입한 시간을 자동으로 이어서 재고 기록에 남깁니다.</p>
+  </section>
+
+  <!-- 자주 묻는 질문 (구조화 데이터 FAQPage와 동일한 내용) -->
+  <section class="panel faq-section" id="faq">
+    <p class="panel-title">자주 묻는 질문</p>
+    <h3>타임박스(타임박싱)란 무엇인가요?</h3>
+    <p>타임박싱은 하나의 작업에 15분·25분·50분처럼 미리 정한 시간을 배정하고, 그 시간 안에서만 집중하는 시간관리 기법입니다. 끝나는 시점이 정해져 있어 시작 부담이 줄고, 작업이 끝없이 늘어지는 것을 막아줍니다. 이 사이트는 타임박스를 만들고, 타이머로 실행하고, 끝날 때 도장을 찍듯 기록하는 무료 도구입니다.</p>
+    <h3>타임박스는 몇 분으로 정하는 게 좋나요?</h3>
+    <p>정답은 없지만 흔히 25분은 짧은 집중을 반복하는 작업, 50분은 강의·독서·문제 풀이처럼 흐름이 끊기면 손해인 작업, 90분은 깊은 몰입이 필요한 작업에 쓰입니다. 처음이라면 25분으로 시작해 익숙해지면 늘려 보세요. 이 사이트에서는 15·25·50·90분 프리셋과 직접 입력을 모두 지원합니다.</p>
+    <h3>타임박싱과 뽀모도로 기법은 뭐가 다른가요?</h3>
+    <p>뽀모도로는 25분 집중과 5분 휴식을 반복하는 고정된 방식이고, 타임박싱은 작업마다 필요한 시간을 직접 정해 배정하는 더 넓은 개념입니다. 뽀모도로를 타임박싱의 한 형태로 볼 수 있으며, 이 사이트에서는 25분 박스를 반복해 뽀모도로처럼 쓸 수도 있습니다.</p>
+    <h3>타이머 끄는 걸 깜빡하거나 계획 시간을 넘겨 몰입하면 어떻게 되나요?</h3>
+    <p>계획 시간이 지나도 타이머는 멈추지 않고 초과 시간을 자동으로 이어서 측정합니다. 측정은 실제 시작 시각을 기준으로 계산되므로 다른 탭에 갔다 오거나 페이지를 닫았다 다시 열어도 이어집니다. 완료하면 자동 감지된 초과 시간이 따로 표시되고, 그 시간은 날짜가 지나도 언제든 기록·수정·삭제할 수 있습니다.</p>
+    <h3>기록은 어디에 저장되나요? 로그인이 필요한가요?</h3>
+    <p>로그인이나 회원가입은 필요 없습니다. 기록은 서버로 전송되지 않고 이용자의 브라우저(localStorage)에만 저장됩니다. 그래서 브라우저의 사이트 데이터를 삭제하면 기록도 함께 사라지고, 다른 기기와는 자동으로 동기화되지 않습니다.</p>
+    <h3>기록을 지울 수 있나요?</h3>
+    <p>완료한 기록은 그날에 한해 삭제할 수 있고, 하루가 지나면 삭제가 잠깁니다. 다만 자동으로 감지된 초과 몰입 시간은 날짜와 상관없이 언제든 수정하거나 삭제할 수 있습니다.</p>
+    <h3>앱처럼 설치해서 쓸 수 있나요?</h3>
+    <p>네. 홈 화면에 추가하면 주소창 없이 앱처럼 실행되고, 한 번 열어본 뒤에는 오프라인에서도 화면이 열립니다. 안드로이드와 PC 크롬·엣지에서는 설치 버튼이나 주소창의 설치 아이콘을, 아이폰 사파리에서는 공유 버튼의 &#x27;홈 화면에 추가&#x27;를 사용하세요.</p>
+    <h3>이용료가 있나요?</h3>
+    <p>무료입니다. 사이트 운영을 위해 광고가 표시될 수 있으며, 광고와 쿠키에 관한 내용은 개인정보처리방침에서 확인할 수 있습니다.</p>
+    <div class="updated">최종 업데이트 <time datetime="2026-10-29">2026-10-29</time></div>
   </section>
 
   <!-- 광고 슬롯: 하단 -->
@@ -301,10 +521,32 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     };
   }
 
+
+  // ---------- 앱 설치 (PWA) ----------
+  (function(){
+    const btn = document.getElementById('installBtn');
+    const ok = document.getElementById('installOk');
+    let deferred = null;
+    const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    if(standalone){ ok.style.display='block'; }
+    window.addEventListener('beforeinstallprompt', e=>{
+      e.preventDefault(); deferred = e;
+      if(!standalone) btn.style.display='inline-block';
+    });
+    btn.addEventListener('click', async ()=>{
+      if(!deferred) return;
+      deferred.prompt();
+      try{ await deferred.userChoice; }catch(e){}
+      deferred = null; btn.style.display='none';
+    });
+    window.addEventListener('appinstalled', ()=>{ btn.style.display='none'; ok.style.display='block'; });
+  })();
+
   renderTodayStats();
   checkActiveSession();
   initCookieBanner();
 })();
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
 </body>
 </html>
