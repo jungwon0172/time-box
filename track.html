@@ -3,9 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>타임박스 · 하루를 찍어내다</title>
-<meta name="description" content="25/50/90분 단위로 하루를 타임박스로 나누고, 실행할 때마다 카드에 도장을 찍듯 기록하는 타임박스 기록 사이트.">
+<title>타임박스 기록하기 · 타이머로 실행하고 도장 찍기</title>
+<meta name="description" content="타임박스를 만들고 원형 타이머로 실행하세요. 계획 시간을 넘겨 몰입해도 초과 시간을 자동 측정하고, 완료할 때마다 하루 펀치카드에 기록합니다.">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="naver-site-verification" content="5e72d5a7c8d6067851d87bc4873bbc3979717430" />
+<link rel="canonical" href="https://time-box-beige.vercel.app/track.html">
+<meta name="theme-color" content="#1B2430">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="타임박스">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="타임박스">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="타임박스 기록하기 · 타이머로 실행하고 도장 찍기">
+<meta property="og:description" content="타임박스를 만들고 원형 타이머로 실행하세요. 계획 시간을 넘겨 몰입해도 초과 시간을 자동 측정하고, 완료할 때마다 하루 펀치카드에 기록합니다.">
+<meta property="og:url" content="https://time-box-beige.vercel.app/track.html">
+<meta property="og:image" content="https://time-box-beige.vercel.app/icon-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://time-box-beige.vercel.app/track.html#webpage",
+   "url": "https://time-box-beige.vercel.app/track.html",
+   "name": "타임박스 기록하기 · 타이머로 실행하고 도장 찍기",
+   "description": "타임박스를 만들고 원형 타이머로 실행하세요. 계획 시간을 넘겨 몰입해도 초과 시간을 자동 측정하고, 완료할 때마다 하루 펀치카드에 기록합니다.",
+   "inLanguage": "ko",
+   "isPartOf": {
+    "@id": "https://time-box-beige.vercel.app/#website"
+   },
+   "dateModified": "2026-11-22"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "홈",
+     "item": "https://time-box-beige.vercel.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "기록하기",
+     "item": "https://time-box-beige.vercel.app/track.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -577,6 +632,11 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
 .mini-cell.sel .dm{color:var(--brass-2);}
 .mini-cell .dd{display:flex; gap:2px; margin-top:3px;}
 .mini-cell .dd i{width:5px; height:5px; border-radius:50%; display:inline-block;}
+
+/* 시계는 좌측 제목 아래로 (우측 상단은 소개·문의 전용) */
+.top .clock-face{text-align:left; margin-top:14px; display:flex; align-items:baseline; gap:12px;}
+.top .clock-face .now{font-size:22px;}
+.top .clock-face .date{margin-top:0;}
 </style>
 </head>
 <body>
@@ -585,19 +645,18 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
   <header class="top">
     <div>
       <div class="brand-eyebrow">TIME · BOX · RECORD</div>
-      <h1>타임박스
+      <h1>타임박스 기록하기
         <span class="sub">하루를 정해진 조각으로 잘라, 실행할 때마다 도장을 찍는다</span>
       </h1>
+      <div class="clock-face">
+      <div class="now" id="nowClock">--:--</div>
+      <div class="date" id="nowDate">----.--.--</div>
+      </div>
     </div>
     <div class="top-right">
       <div class="util-links">
         <a href="about.html">소개</a>
         <a href="mailto:yjw2172@naver.com">문의</a>
-        <a href="calendar.html">달력</a>
-      </div>
-      <div class="clock-face">
-      <div class="now" id="nowClock">--:--</div>
-      <div class="date" id="nowDate">----.--.--</div>
       </div>
     </div>
   </header>
@@ -607,6 +666,7 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     <a href="track.html" class="primary">기록하기</a>
     <a href="calendar.html">달력</a>
     <a href="compare.html">비교 그래프</a>
+    <a href="guide.html">가이드</a>
   </nav>
 
   <div class="day-switch">
@@ -730,7 +790,7 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
 
   <footer class="foot">
     <div class="foot-links">
-      <a href="about.html">사이트 소개</a>·
+      <a href="guide.html">가이드</a>·<a href="about.html">사이트 소개</a>·
       <a href="privacy.html">개인정보처리방침</a>
     </div>
     이 기록은 이 브라우저에만 저장됩니다 · TIMEBOX RECORD SITE
@@ -1213,5 +1273,6 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
   initCookieBanner();
 })();
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
 </body>
 </html>

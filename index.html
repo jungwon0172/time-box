@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>타임박스 · 하루를 정해진 조각으로 찍어내다</title>
-<meta name="description" content="25/50/90분 단위로 하루를 타임박스로 나누고, 실행할 때마다 카드에 도장을 찍듯 기록하는 타임박스 기록 사이트. 달력과 비교 그래프로 시간 사용을 돌아보세요.">
+<title>타임박스 · 15·25·50·90분 타임박싱 기록 앱 (무료)</title>
+<meta name="description" content="할 일을 15·25·50·90분 시간 상자에 담아 타이머로 실행하고 도장 찍듯 기록하는 무료 타임박싱 웹앱. 초과 몰입 자동 측정, 달력, 비교 그래프, 홈 화면 설치까지.">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="naver-site-verification" content="5e72d5a7c8d6067851d87bc4873bbc3979717430" />
 <link rel="canonical" href="https://time-box-beige.vercel.app/">
 <meta name="theme-color" content="#1B2430">
@@ -19,8 +20,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="타임박스">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="타임박스 · 하루를 정해진 조각으로 찍어내다">
-<meta property="og:description" content="25/50/90분 단위로 하루를 타임박스로 나누고, 실행할 때마다 카드에 도장을 찍듯 기록하는 타임박스 기록 사이트. 달력과 비교 그래프로 시간 사용을 돌아보세요.">
+<meta property="og:title" content="타임박스 · 15·25·50·90분 타임박싱 기록 앱 (무료)">
+<meta property="og:description" content="할 일을 15·25·50·90분 시간 상자에 담아 타이머로 실행하고 도장 찍듯 기록하는 무료 타임박싱 웹앱. 초과 몰입 자동 측정, 달력, 비교 그래프, 홈 화면 설치까지.">
 <meta property="og:url" content="https://time-box-beige.vercel.app/">
 <meta property="og:image" content="https://time-box-beige.vercel.app/icon-512.png">
 <meta name="twitter:card" content="summary">
@@ -65,7 +66,7 @@
     "최근 7일·주간 카테고리 비교 그래프",
     "홈 화면 설치 및 오프라인 실행(PWA)"
    ],
-   "dateModified": "2026-10-29"
+   "dateModified": "2026-11-22"
   },
   {
    "@type": "FAQPage",
@@ -142,8 +143,8 @@
    "@type": "WebPage",
    "@id": "https://time-box-beige.vercel.app/#webpage",
    "url": "https://time-box-beige.vercel.app/",
-   "name": "타임박스 · 하루를 정해진 조각으로 찍어내다",
-   "description": "25/50/90분 단위로 하루를 타임박스로 나누고, 실행할 때마다 카드에 도장을 찍듯 기록하는 타임박스 기록 사이트. 달력과 비교 그래프로 시간 사용을 돌아보세요.",
+   "name": "타임박스 · 15·25·50·90분 타임박싱 기록 앱 (무료)",
+   "description": "할 일을 15·25·50·90분 시간 상자에 담아 타이머로 실행하고 도장 찍듯 기록하는 무료 타임박싱 웹앱. 초과 몰입 자동 측정, 달력, 비교 그래프, 홈 화면 설치까지.",
    "inLanguage": "ko",
    "isPartOf": {
     "@id": "https://time-box-beige.vercel.app/#website"
@@ -151,7 +152,7 @@
    "about": {
     "@id": "https://time-box-beige.vercel.app/#app"
    },
-   "dateModified": "2026-10-29"
+   "dateModified": "2026-11-22"
   }
  ]
 }
@@ -310,6 +311,11 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
 .faq-section h3:first-of-type{margin-top:4px;}
 .faq-section p{font-size:14px; line-height:1.85; margin:0; color:#43392A;}
 .updated{font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); margin-top:18px;}
+
+/* 시계는 좌측 제목 아래로 (우측 상단은 소개·문의 전용) */
+.top .clock-face{text-align:left; margin-top:14px; display:flex; align-items:baseline; gap:12px;}
+.top .clock-face .now{font-size:22px;}
+.top .clock-face .date{margin-top:0;}
 </style>
 </head>
 <body>
@@ -321,16 +327,15 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
       <h1>타임박스
         <span class="sub">하루를 정해진 조각으로 잘라, 실행할 때마다 도장을 찍는다</span>
       </h1>
+      <div class="clock-face">
+      <div class="now" id="nowClock">--:--</div>
+      <div class="date" id="nowDate">----.--.--</div>
+      </div>
     </div>
     <div class="top-right">
       <div class="util-links">
         <a href="about.html">소개</a>
         <a href="mailto:yjw2172@naver.com">문의</a>
-        <a href="calendar.html">달력</a>
-      </div>
-      <div class="clock-face">
-      <div class="now" id="nowClock">--:--</div>
-      <div class="date" id="nowDate">----.--.--</div>
       </div>
     </div>
   </header>
@@ -340,6 +345,7 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     <a href="track.html" class="primary">타임박스 시작하기</a>
     <a href="calendar.html">달력</a>
     <a href="compare.html">비교 그래프</a>
+    <a href="guide.html">가이드</a>
     <a href="#install">앱 설치</a>
     <a href="#faq">FAQ</a>
   </nav>
@@ -426,6 +432,30 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
     <p>25분은 뽀모도로 기법에서 널리 쓰이는 단위로 짧은 집중 반복에 적합하고, 50분은 강의·독서처럼 흐름이 끊기면 손해인 작업에, 90분은 딥워크처럼 완전히 몰입이 필요한 작업에 어울립니다. 몰입하다 보면 정해둔 시간을 넘기는 경우도 흔한데, 이 사이트는 타이머를 끄는 걸 잊더라도 실제로 몰입한 시간을 자동으로 이어서 재고 기록에 남깁니다.</p>
   </section>
 
+  <!-- 타임박싱 가이드 (내부 링크) -->
+  <section class="panel" id="guides">
+    <p class="panel-title">타임박싱 가이드</p>
+    <div class="card-grid">
+      <a class="nav-card" href="guide-timeboxing.html">
+        <div class="nc-title">타임박싱 하는 법 5단계</div>
+        <div class="nc-desc">오늘 할 일을 시간 상자에 담아 실행하는 방법과 자주 하는 실수.</div>
+      </a>
+      <a class="nav-card" href="guide-duration.html">
+        <div class="nc-title">타임박스 몇 분이 좋을까</div>
+        <div class="nc-desc">15·25·50·90분을 작업 성격에 맞게 고르는 기준.</div>
+      </a>
+      <a class="nav-card" href="guide-pomodoro.html">
+        <div class="nc-title">타임박싱과 뽀모도로 차이</div>
+        <div class="nc-desc">두 방법의 차이와 함께 쓰는 방법.</div>
+      </a>
+      <a class="nav-card" href="guide-study.html">
+        <div class="nc-title">공부 타임박싱 시간표</div>
+        <div class="nc-desc">시험 준비와 과제에 적용하는 시간표 예시.</div>
+      </a>
+    </div>
+    <p style="margin:14px 0 0; font-size:13px;"><a href="guide.html" style="color:#9c2f45;">가이드 전체 보기 →</a></p>
+  </section>
+
   <!-- 자주 묻는 질문 (구조화 데이터 FAQPage와 동일한 내용) -->
   <section class="panel faq-section" id="faq">
     <p class="panel-title">자주 묻는 질문</p>
@@ -456,7 +486,7 @@ footer.foot .foot-links a:hover{text-decoration:underline;}
 
   <footer class="foot">
     <div class="foot-links">
-      <a href="about.html">사이트 소개</a>·
+      <a href="guide.html">가이드</a>·<a href="about.html">사이트 소개</a>·
       <a href="privacy.html">개인정보처리방침</a>
     </div>
     이 기록은 이 브라우저에만 저장됩니다 · TIMEBOX RECORD SITE

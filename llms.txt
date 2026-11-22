@@ -5,7 +5,7 @@
 주소: https://time-box-beige.vercel.app/
 언어: 한국어
 요금: 무료 (광고 게재)
-최종 업데이트: 2026-10-29
+최종 업데이트: 2026-11-22
 
 ## 핵심 기능
 - 타임박스 만들기: 할 일 + 분류(집중업무/과제·공부/러닝/콘텐츠/기타) + 예상 시간(15/25/50/90분 또는 직접 입력)
@@ -23,6 +23,13 @@
 - [비교 그래프](https://time-box-beige.vercel.app/compare.html)
 - [사이트 소개](https://time-box-beige.vercel.app/about.html)
 - [개인정보처리방침](https://time-box-beige.vercel.app/privacy.html)
+
+## 가이드 글
+- [타임박싱 가이드 (목록)](https://time-box-beige.vercel.app/guide.html)
+- [타임박싱 하는 법 5단계](https://time-box-beige.vercel.app/guide-timeboxing.html): 오늘 할 일을 시간 상자에 담아 실행하는 방법과 자주 하는 실수
+- [타임박스 몇 분이 좋을까? 15·25·50·90분 고르는 기준](https://time-box-beige.vercel.app/guide-duration.html): 시간별 어울리는 작업 비교표와 고르는 질문
+- [타임박싱과 뽀모도로 차이](https://time-box-beige.vercel.app/guide-pomodoro.html): 두 기법 비교와 함께 쓰는 방법
+- [공부 타임박싱 시간표 짜는 법](https://time-box-beige.vercel.app/guide-study.html): 시험 준비·과제에 적용하는 박스 크기와 하루 시간표 예시
 
 ## 자주 묻는 질문 요약
 - 기록은 어디에 저장되나요? 서버로 전송되지 않고 이용자 브라우저에만 저장됩니다. 브라우저 데이터를 지우면 기록도 사라지며, 기기 간 동기화는 되지 않습니다.

@@ -1,9 +1,10 @@
 // 타임박스 서비스워커 — 오프라인에서도 열리도록 같은 도메인의 페이지/아이콘만 캐시합니다.
 // 광고·폰트 등 외부 도메인 요청은 건드리지 않습니다. 기록 데이터는 localStorage에 있어 캐시와 무관합니다.
-const VERSION = 'timebox-v1';
+const VERSION = 'timebox-v2';
 const PRECACHE = [
   '/', '/index.html', '/track.html', '/calendar.html', '/compare.html',
   '/about.html', '/privacy.html',
+  '/guide.html', '/guide-timeboxing.html', '/guide-duration.html', '/guide-pomodoro.html', '/guide-study.html',
   '/manifest.webmanifest', '/favicon.svg', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png'
 ];
 

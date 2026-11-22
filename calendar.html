@@ -3,9 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>달력 · 타임박스</title>
-<meta name="description" content="월 단위로 어떤 날 얼마나 타임박스를 채웠는지 한눈에 보는 타임박스 달력.">
+<title>달력으로 보는 집중 시간 기록 · 타임박스</title>
+<meta name="description" content="한 달 동안 날짜별로 완료한 타임박스 수, 총 집중 시간, 카테고리를 달력으로 한눈에 확인하세요. 날짜를 누르면 그날의 기록으로 이동합니다.">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="naver-site-verification" content="5e72d5a7c8d6067851d87bc4873bbc3979717430" />
+<link rel="canonical" href="https://time-box-beige.vercel.app/calendar.html">
+<meta name="theme-color" content="#1B2430">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="타임박스">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="타임박스">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="달력으로 보는 집중 시간 기록 · 타임박스">
+<meta property="og:description" content="한 달 동안 날짜별로 완료한 타임박스 수, 총 집중 시간, 카테고리를 달력으로 한눈에 확인하세요. 날짜를 누르면 그날의 기록으로 이동합니다.">
+<meta property="og:url" content="https://time-box-beige.vercel.app/calendar.html">
+<meta property="og:image" content="https://time-box-beige.vercel.app/icon-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://time-box-beige.vercel.app/calendar.html#webpage",
+   "url": "https://time-box-beige.vercel.app/calendar.html",
+   "name": "달력으로 보는 집중 시간 기록 · 타임박스",
+   "description": "한 달 동안 날짜별로 완료한 타임박스 수, 총 집중 시간, 카테고리를 달력으로 한눈에 확인하세요. 날짜를 누르면 그날의 기록으로 이동합니다.",
+   "inLanguage": "ko",
+   "isPartOf": {
+    "@id": "https://time-box-beige.vercel.app/#website"
+   },
+   "dateModified": "2026-11-22"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "홈",
+     "item": "https://time-box-beige.vercel.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "달력",
+     "item": "https://time-box-beige.vercel.app/calendar.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -90,7 +145,6 @@ footer.foot .foot-links a{color:var(--brass-2); text-decoration:none; margin:0 1
       <div class="util-links">
         <a href="about.html">소개</a>
         <a href="mailto:yjw2172@naver.com">문의</a>
-        <a href="calendar.html">달력</a>
       </div>
     </div>
   </header>
@@ -100,6 +154,7 @@ footer.foot .foot-links a{color:var(--brass-2); text-decoration:none; margin:0 1
     <a href="track.html" class="primary">기록하기</a>
     <a href="calendar.html">달력</a>
     <a href="compare.html">비교 그래프</a>
+    <a href="guide.html">가이드</a>
   </nav>
 
   <section class="panel">
@@ -118,7 +173,7 @@ footer.foot .foot-links a{color:var(--brass-2); text-decoration:none; margin:0 1
   </div>
 
   <footer class="foot">
-    <div class="foot-links"><a href="about.html">사이트 소개</a>·<a href="privacy.html">개인정보처리방침</a></div>
+    <div class="foot-links"><a href="guide.html">가이드</a>·<a href="about.html">사이트 소개</a>·<a href="privacy.html">개인정보처리방침</a></div>
     이 기록은 이 브라우저에만 저장됩니다 · TIMEBOX RECORD SITE
   </footer>
 </div>
@@ -211,5 +266,6 @@ footer.foot .foot-links a{color:var(--brass-2); text-decoration:none; margin:0 1
   initCookieBanner();
 })();
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
 </body>
 </html>
